@@ -1,0 +1,4 @@
+    splitRatio: 0.6,
+    navCollapsed: false,
+    navGroupsCollapsed: {},
+  };
