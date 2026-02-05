@@ -13,6 +13,7 @@ export type UiSettings = {
   splitRatio: number; // Sidebar split ratio (0.4 to 0.7, default 0.6)
   navCollapsed: boolean; // Collapsible sidebar state
   navGroupsCollapsed: Record<string, boolean>; // Which nav groups are collapsed
+  zoom: number; // UI zoom level (0.5 to 2.0, default 1.0)
 };
 
 export function loadSettings(): UiSettings {
@@ -32,6 +33,7 @@ export function loadSettings(): UiSettings {
     splitRatio: 0.6,
     navCollapsed: false,
     navGroupsCollapsed: {},
+    zoom: 1.0,
   };
 
   try {
@@ -77,6 +79,10 @@ export function loadSettings(): UiSettings {
         typeof parsed.navGroupsCollapsed === "object" && parsed.navGroupsCollapsed !== null
           ? parsed.navGroupsCollapsed
           : defaults.navGroupsCollapsed,
+      zoom:
+        typeof parsed.zoom === "number" && parsed.zoom >= 0.5 && parsed.zoom <= 2.0
+          ? parsed.zoom
+          : defaults.zoom,
     };
   } catch {
     return defaults;

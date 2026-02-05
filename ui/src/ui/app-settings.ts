@@ -52,6 +52,7 @@ type SettingsHost = {
 };
 
 export function applySettings(host: SettingsHost, next: UiSettings) {
+  document.documentElement.style.setProperty("--ui-zoom", String(next.zoom ?? 1.0));
   const normalized = {
     ...next,
     lastActiveSessionKey: next.lastActiveSessionKey?.trim() || next.sessionKey.trim() || "main",

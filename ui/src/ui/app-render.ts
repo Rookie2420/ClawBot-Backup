@@ -1,5 +1,24 @@
 import { html, nothing } from "lit";
 import type { AppViewState } from "./app-view-state.ts";
+import type { GatewayBrowserClient, GatewayHelloOk } from "./gateway";
+import type { UiSettings } from "./storage";
+import type { ThemeMode } from "./theme";
+import type { ThemeTransitionContext } from "./theme-transition";
+import type {
+  ConfigSnapshot,
+  CronJob,
+  CronRunLogEntry,
+  CronStatus,
+  HealthSnapshot,
+  LogEntry,
+  LogLevel,
+  PresenceEntry,
+  ChannelsStatusSnapshot,
+  SessionsListResult,
+  SkillStatusReport,
+  StatusSummary,
+} from "./types";
+import type { ChatQueueItem, CronFormState } from "./ui-types";
 import { parseAgentSessionKey } from "../../../src/routing/session-key.js";
 import { ChatHost, refreshChatAvatar } from "./app-chat.ts";
 import { renderChatControls, renderTab, renderThemeToggle } from "./app-render.helpers.ts";
@@ -68,6 +87,7 @@ import { renderNodes } from "./views/nodes.ts";
 import { renderOverview } from "./views/overview.ts";
 import { renderSessions } from "./views/sessions.ts";
 import { renderSkills } from "./views/skills.ts";
+import { renderZoomControls } from "./zoom-controls";
 
 const AVATAR_DATA_RE = /^data:/i;
 const AVATAR_HTTP_RE = /^https?:\/\//i;
@@ -107,6 +127,7 @@ export function renderApp(state: AppViewState) {
     null;
 
   return html`
+      ${renderZoomControls(state)}
     <div class="shell ${isChat ? "shell--chat" : ""} ${chatFocus ? "shell--chat-focus" : ""} ${state.settings.navCollapsed ? "shell--nav-collapsed" : ""} ${state.onboarding ? "shell--onboarding" : ""}">
       <header class="topbar">
         <div class="topbar-left">
@@ -146,6 +167,7 @@ export function renderApp(state: AppViewState) {
           const isGroupCollapsed = state.settings.navGroupsCollapsed[group.label] ?? false;
           const hasActiveTab = group.tabs.some((tab) => tab === state.tab);
           return html`
+      ${renderZoomControls(state)}
             <div class="nav-group ${isGroupCollapsed && !hasActiveTab ? "nav-group--collapsed" : ""}">
               <button
                 class="nav-label"

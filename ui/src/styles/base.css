@@ -23,9 +23,9 @@
   --chrome-strong: rgba(18, 20, 26, 0.98);
 
   /* Text - Slightly warmer */
-  --text: #e4e4e7;
+  --text: #ffffff;
   --text-strong: #fafafa;
-  --chat-text: #e4e4e7;
+  --chat-text: #ffffff;
   --muted: #71717a;
   --muted-strong: #52525b;
   --muted-foreground: #71717a;
@@ -115,24 +115,24 @@
 
 /* Light theme - Clean with subtle warmth */
 :root[data-theme="light"] {
-  --bg: #fafafa;
-  --bg-accent: #f5f5f5;
-  --bg-elevated: #ffffff;
-  --bg-hover: #f0f0f0;
-  --bg-muted: #f0f0f0;
-  --bg-content: #f5f5f5;
+  --bg: #f8f7f4;
+  --bg-accent: #f3f2ef;
+  --bg-elevated: #fdfcfa;
+  --bg-hover: #edeae5;
+  --bg-muted: #edeae5;
+  --bg-content: #f3f2ef;
 
-  --card: #ffffff;
+  --card: #fdfcfa;
   --card-foreground: #18181b;
   --card-highlight: rgba(0, 0, 0, 0.03);
-  --popover: #ffffff;
+  --popover: #fdfcfa;
   --popover-foreground: #18181b;
 
-  --panel: #fafafa;
-  --panel-strong: #f5f5f5;
+  --panel: #f8f7f4;
+  --panel-strong: #f3f2ef;
   --panel-hover: #ebebeb;
-  --chrome: rgba(250, 250, 250, 0.95);
-  --chrome-strong: rgba(250, 250, 250, 0.98);
+  --chrome: rgba(248, 247, 244, 0.95);
+  --chrome-strong: rgba(248, 247, 244, 0.98);
 
   --text: #3f3f46;
   --text-strong: #18181b;
@@ -385,4 +385,96 @@ select {
 :focus-visible {
   outline: none;
   box-shadow: var(--focus-ring);
+}
+
+/* Zoom controls */
+html {
+  zoom: var(--ui-zoom, 1);
+}
+
+.zoom-controls {
+  position: fixed;
+  top: 10px;
+  right: 200px;
+  display: flex;
+  gap: 4px;
+  z-index: 1000;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.zoom-btn {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  font-size: 14px;
+  min-width: 32px;
+  padding: 4px 8px;
+  transition: all 0.2s;
+}
+
+.zoom-btn:hover:not(:disabled) {
+  background: var(--color-bg-hover);
+  border-color: var(--color-accent);
+}
+
+.zoom-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.zoom-btn--reset {
+  min-width: 48px;
+  font-weight: 500;
+}
+
+/* Zoom controls */
+html {
+  zoom: var(--ui-zoom, 1);
+}
+
+.zoom-controls {
+  position: fixed;
+  top: 10px;
+  right: 200px;
+  display: flex;
+  gap: 4px;
+  z-index: 1000;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.zoom-btn {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  font-size: 14px;
+  min-width: 32px;
+  padding: 4px 8px;
+  transition: all 0.2s;
+}
+
+.zoom-btn:hover:not(:disabled) {
+  background: var(--color-bg-hover);
+  border-color: var(--color-accent);
+}
+
+.zoom-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.zoom-btn--reset {
+  min-width: 48px;
+  font-weight: 500;
 }
