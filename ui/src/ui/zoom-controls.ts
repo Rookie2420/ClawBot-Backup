@@ -1,7 +1,7 @@
 import { html } from "lit";
-import type { OpenClawApp } from "./app";
+import type { AppViewState } from "./app-view-state.ts";
 
-export function renderZoomControls(state: OpenClawApp) {
+export function renderZoomControls(state: AppViewState) {
   const zoom = state.settings.zoom ?? 1.0;
   const zoomPercent = Math.round(zoom * 100);
   const zoomIn = () => {
