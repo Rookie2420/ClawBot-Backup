@@ -16,8 +16,8 @@
  * @license MIT
  */
 
-const fs = require("fs");
-const path = require("path");
+import fs from "node:fs";
+import path from "node:path";
 
 // Model pricing in USD per million tokens
 // Based on public API pricing as of 2026-01
